@@ -7,6 +7,18 @@ import { AppError } from "../utils/AppError";
 
 const isProduction = process.env.NODE_ENV === "production";
 
+// In production the client and server live on different domains (e.g. two
+// separate Vercel projects), so the cookie must be "sameSite: none" to be
+// sent on cross-site requests. That requires "secure: true" as well, which
+// is fine since production is always served over HTTPS. Locally, both run
+// on http://localhost on different ports, so "lax" + non-secure works.
+const cookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  sameSite: isProduction ? ("none" as const) : ("lax" as const),
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+};
+
 export const login = asyncHandler(async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
@@ -32,12 +44,7 @@ export const login = asyncHandler(async (req: Request, res: Response) => {
 
   const token = signToken({ userId: user._id.toString(), role: user.role });
 
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: isProduction,
-    sameSite: "lax",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
+  res.cookie("token", token, cookieOptions);
 
   res.json({
     user: {
@@ -51,7 +58,7 @@ export const login = asyncHandler(async (req: Request, res: Response) => {
 });
 
 export const logout = (req: Request, res: Response) => {
-  res.clearCookie("token");
+  res.clearCookie("token", cookieOptions);
   res.json({ message: "Logged out successfully" });
 };
 
