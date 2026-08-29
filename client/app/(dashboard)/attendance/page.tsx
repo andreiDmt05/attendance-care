@@ -176,7 +176,7 @@ export default function AttendancePage() {
                   {isAdmin && (
                     <TableCell>
                       <button
-                        className="cursor-pointer text-sm font-medium text-slate-600 hover:text-slate-900"
+                        className="appearance-none cursor-pointer text-sm font-medium text-slate-600 hover:text-slate-900"
                         onClick={() => setEditingRecord(record)}
                       >
                         Edit

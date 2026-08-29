@@ -20,7 +20,7 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
           <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
           <button
             onClick={onClose}
-            className="cursor-pointer text-slate-400 hover:text-slate-600"
+            className="appearance-none cursor-pointer text-slate-400 hover:text-slate-600"
             aria-label="Close"
           >
             ✕
