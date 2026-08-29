@@ -21,7 +21,7 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
     <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6">
       <button
         onClick={onMenuClick}
-        className="rounded-md p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
+        className="cursor-pointer rounded-md p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
         aria-label="Open menu"
       >
         ☰

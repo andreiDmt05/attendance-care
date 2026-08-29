@@ -122,13 +122,13 @@ export default function LeavesPage() {
                       {leave.status === "PENDING" && (
                         <div className="flex gap-3">
                           <button
-                            className="text-sm font-medium text-green-700 hover:text-green-900"
+                            className="cursor-pointer text-sm font-medium text-green-700 hover:text-green-900"
                             onClick={() => handleUpdateStatus(leave, "APPROVED")}
                           >
                             Approve
                           </button>
                           <button
-                            className="text-sm font-medium text-red-600 hover:text-red-800"
+                            className="cursor-pointer text-sm font-medium text-red-600 hover:text-red-800"
                             onClick={() => handleUpdateStatus(leave, "REJECTED")}
                           >
                             Reject

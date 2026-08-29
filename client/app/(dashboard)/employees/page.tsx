@@ -117,20 +117,20 @@ export default function EmployeesPage() {
                   <TableCell>
                     <div className="flex gap-3">
                       <button
-                        className="text-sm font-medium text-slate-600 hover:text-slate-900"
+                        className="cursor-pointer text-sm font-medium text-slate-600 hover:text-slate-900"
                         onClick={() => setViewingEmployee(employee)}
                       >
                         View
                       </button>
                       <button
-                        className="text-sm font-medium text-slate-600 hover:text-slate-900"
+                        className="cursor-pointer text-sm font-medium text-slate-600 hover:text-slate-900"
                         onClick={() => openEditModal(employee)}
                       >
                         Edit
                       </button>
                       {employee.isActive && (
                         <button
-                          className="text-sm font-medium text-red-600 hover:text-red-800"
+                          className="cursor-pointer text-sm font-medium text-red-600 hover:text-red-800"
                           onClick={() => handleDeactivate(employee)}
                         >
                           Deactivate
